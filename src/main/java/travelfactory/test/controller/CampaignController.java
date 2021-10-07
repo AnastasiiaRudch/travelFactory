@@ -5,6 +5,7 @@ import org.springframework.web.bind.annotation.*;
 import travelfactory.test.dto.CampaignDto;
 import travelfactory.test.service.CampaignService;
 
+import javax.validation.Valid;
 import java.util.List;
 
 @RestController
@@ -21,7 +22,7 @@ public class CampaignController {
     }
 
     @PostMapping("{campaignId}")
-    public ResponseEntity<CampaignDto> createCampaign(@RequestBody CampaignDto campaignDto, @PathVariable("campaignId") Integer campaignId) {
+    public ResponseEntity<CampaignDto> createCampaign(@Valid @RequestBody CampaignDto campaignDto, @PathVariable("campaignId") Integer campaignId) {
         return ResponseEntity.ok(campaignService.createCampaign(campaignDto, campaignId));
     }
 
